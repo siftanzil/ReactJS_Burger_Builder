@@ -11,9 +11,10 @@
 
 .NavLink{
     text-decoration: none;
-    color: white;
+    color: rgb(177, 61, 61);
     font-size: 25px;
     margin-top: -25px;
+    padding: 2px 5px 2px 5px;
 }
 
 .NavLink :hover{

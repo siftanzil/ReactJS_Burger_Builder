@@ -2,7 +2,8 @@
 
 import React from "react";
 import "./Header.css";
-import { Navbar, NavbarBrand, Nav, NavItem, NavLink } from "reactstrap";
+import { NavLink } from "react-router-dom";
+import { Navbar, NavbarBrand, Nav, NavItem } from "reactstrap";
 import Logo from "../../assets/logo.png";
 
 const Header = (props) => {
@@ -19,9 +20,13 @@ const Header = (props) => {
         </NavbarBrand>
         <Nav className="mr-md-5">
           <NavItem>
-            <NavLink href="#" className="NavLink">
-              {" "}
-              Link
+            <NavLink exact="true" to="/" className="NavLink">
+              Builder
+            </NavLink>
+          </NavItem>
+          <NavItem>
+            <NavLink exact="true" to="/orders" className="NavLink">
+              Orders
             </NavLink>
           </NavItem>
         </Nav>

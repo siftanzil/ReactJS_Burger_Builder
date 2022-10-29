@@ -1,5 +1,5 @@
 import React from "react";
-import { Card, CardBody, CardFooter, CardHeader } from "reactstrap";
+import { Card, CardBody, CardFooter, CardHeader, Button } from "reactstrap";
 
 const controls = [
   { label: "Salad", type: "salad" },
@@ -7,13 +7,16 @@ const controls = [
   { label: "Meat", type: "meat" },
 ];
 
-function BuildControl(props) {
+const BuildControl = (props) => {
   return (
     <div className="d-flex">
-      <div className="me-auto ml-5" style={{ fontWeight: "bold" }}>
+      <div
+        className="me-auto ml-5"
+        style={{ fontWeight: "bold", fontSize: "1.2rem" }}
+      >
         {props.label}
       </div>
-      <button className=" btn btn-danger btn-sm m-1" onClick={props.removed}>
+      <button className="btn btn-danger btn-sm m-1" onClick={props.removed}>
         Less
       </button>
       <button className="btn btn-success btn-sm m-1" onClick={props.added}>
@@ -21,9 +24,9 @@ function BuildControl(props) {
       </button>
     </div>
   );
-}
+};
 
-function Controls(props) {
+const Controls = (props) => {
   return (
     <div className="container ml-md-5" style={{ textAlign: "center" }}>
       <Card
@@ -39,15 +42,8 @@ function Controls(props) {
             color: "black",
           }}
         >
-          <h4>Add Ingredient</h4>
+          <h4>Add Ingredients</h4>
         </CardHeader>
-        {/* 
-        <CardBody>
-          {controls.map((items) => {
-            return buildControl(items.label, items.type, Math.random());
-          })}
-        </CardBody>
-         */}
         <CardBody>
           {controls.map((item) => {
             return (
@@ -61,15 +57,17 @@ function Controls(props) {
             );
           })}
         </CardBody>
-
         <CardFooter>
           <h5>
-            Price:<strong> {props.price} </strong> BDT
+            Price: <strong>{props.price}</strong> BDT
           </h5>
         </CardFooter>
+        <Button disabled={!props.purchasable} onClick={props.toggleModal}>
+          Order Now
+        </Button>
       </Card>
     </div>
   );
-}
+};
 
 export default Controls;
