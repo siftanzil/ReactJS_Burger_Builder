@@ -1,25 +1,26 @@
 import React from "react";
-import Ingredient from "./../Ingredient/Ingredient";
 import "./Burger.css";
+import Ingredient from "../Ingredient/Ingredient";
 
 const Burger = (props) => {
-  let ingredientArray = props.ingredients
+  let ingredientArr = props.ingredients
     .map((item) => {
-      let amountArray = [...Array(item.amount).keys()];
-      return amountArray.map((num) => {
+      let amountArr = [...Array(item.amount).keys()];
+      return amountArr.map((_) => {
         return <Ingredient type={item.type} key={Math.random()} />;
       });
     })
     .reduce((arr, element) => {
       return arr.concat(element);
     }, []);
-  if (ingredientArray.length === 0) {
-    ingredientArray = <h2>Please add tasty layers!</h2>;
+
+  if (ingredientArr.length === 0) {
+    ingredientArr = <p>Add juicy tasty layers!</p>;
   }
   return (
     <div className="Burger">
       <Ingredient type="bread-top" />
-      {ingredientArray}
+      {ingredientArr}
       <Ingredient type="bread-bottom" />
     </div>
   );

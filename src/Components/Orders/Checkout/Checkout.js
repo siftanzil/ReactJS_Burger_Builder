@@ -129,15 +129,15 @@ class Checkout extends Component {
           </select>
           <br />
           <Button
-            className="mr-auto me-1"
-            color="warning"
+            style={{ backgroundColor: "#D70F64" }}
+            className="mr-auto"
             onClick={this.submitHandler}
             disabled={!this.props.purchasable}
           >
             Place Order
           </Button>
           <Link to="/">
-            <Button color="secondary" className="ms-1">
+            <Button color="secondary" className="ml-1">
               Cancel
             </Button>
           </Link>
@@ -147,9 +147,15 @@ class Checkout extends Component {
     return (
       <div>
         {this.state.isLoading ? <Spinner /> : form}
-        <Modal isOpen={this.state.isModalOpen} onClick={this.goBack}>
+        <Modal animation={false} isOpen={this.state.isModalOpen}>
           <ModalBody>
             <p>{this.state.modalMsg}</p>
+            <br />
+            <Link to="/">
+              <Button color="success" className="ml-1">
+                Close
+              </Button>
+            </Link>
           </ModalBody>
         </Modal>
       </div>
