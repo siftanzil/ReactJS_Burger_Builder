@@ -52,6 +52,18 @@ export default (state = INITIAL_STATE, action) => {
         purchasable: sum > 0,
       };
 
+    case actionTypes.RESET_INGREDIENTS:
+      return {
+        ...state,
+        ingredients: [
+          { type: "salad", amount: 1 },
+          { type: "cheese", amount: 1 },
+          { type: "meat", amount: 1 },
+        ],
+        totalPrice: 180,
+        purchasable: true,
+      };
+
     default:
       return state;
   }
