@@ -29,6 +29,11 @@ const Header = (props) => {
               Orders
             </NavLink>
           </NavItem>
+          <NavItem>
+            <NavLink exact="true" to="/login" className="NavLink">
+              Login
+            </NavLink>
+          </NavItem>
         </Nav>
       </Navbar>
     </div>

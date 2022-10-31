@@ -15,8 +15,10 @@ const INITIAL_STATE = {
   orders: [],
   orderLoading: true,
   orderErr: false,
-  totalPrice: 130,
+  totalPrice: 100,
   purchasable: false,
+  token: null,
+  userId: null,
 };
 
 export const reducer = (state = INITIAL_STATE, action) => {
