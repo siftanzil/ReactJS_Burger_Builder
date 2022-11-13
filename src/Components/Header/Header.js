@@ -8,15 +8,16 @@ import Logo from "../../assets/logo.png";
 
 import { connect } from "react-redux";
 
-const mapStateToProps = (state) => {
+const mapStateToProps = ( state ) => {
     return {
         token: state.token,
     };
 };
 
-const Header = (props) => {
+const Header = ( props ) => {
     let links = null;
-    if (props.token === null) {
+    if ( props.token === null )
+    {
         links = (
             <Nav className="mr-md-5">
                 <NavItem>
@@ -26,7 +27,8 @@ const Header = (props) => {
                 </NavItem>
             </Nav>
         );
-    } else {
+    } else
+    {
         links = (
             <Nav className="mr-md-5">
                 <NavItem>
@@ -51,17 +53,17 @@ const Header = (props) => {
     return (
         <div className="Navigation">
             <Navbar
-                style={{
+                style={ {
                     backgroundColor: "yellow",
                     height: "70px",
-                }}
+                } }
             >
                 <NavbarBrand href="/" className="mr-auto ml-md-5 Brand">
-                    <img src={Logo} alt="Logo" width="80px" />
+                    <img src={ Logo } alt="Logo" width="80px" />
                 </NavbarBrand>
-                {links}
+                { links }
             </Navbar>
         </div>
     );
 };
-export default connect(mapStateToProps)(Header);
+export default connect( mapStateToProps )( Header );
