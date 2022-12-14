@@ -12,54 +12,47 @@ import { authCheck } from "../redux/authActionCreators";
 import Logout from "./Auth/Logout";
 
 const mapDispatchToProps = (dispatch) => {
-    return {
-        authCheck: () => dispatch(authCheck()),
-    };
+   return {
+      authCheck: () => dispatch(authCheck()),
+   };
 };
 
 const mapStateToProps = (state) => ({ token: state.token });
 
 class Main extends Component {
-    componentDidMount() {
-        this.props.authCheck();
-    }
+   componentDidMount() {
+      this.props.authCheck();
+   }
 
-    render() {
-        let routes = null;
-        if (this.props.token === null) {
-            routes = (
-                <Routes>
-                    <Route
-                        path="/login"
-                        exact="true"
-                        element={<Auth />}
-                    ></Route>
-                    <Route path="*" element={<Navigate to="/login" />} />
-                </Routes>
-            );
-        } else {
-            routes = (
-                <Routes>
-                    <Route path="/orders" element={<Orders />}></Route>
-                    <Route path="/checkout" element={<Checkout />}></Route>
-                    <Route path="/logout" element={<Logout />}></Route>
-                    <Route
-                        path="/"
-                        exact="true"
-                        element={<BurgerBuilder />}
-                    ></Route>
-                    <Route path="*" element={<Navigate to="/" />} />
-                </Routes>
-            );
-        }
+   render() {
+      let routes = null;
+      if (this.props.token === null) {
+         routes = (
+            <Routes>
+               <Route path="/" exact="true" element={<BurgerBuilder />}></Route>
+               <Route path="/login" exact="true" element={<Auth />}></Route>
+               <Route path="*" element={<Navigate to="/login" />} />
+            </Routes>
+         );
+      } else {
+         routes = (
+            <Routes>
+               <Route path="/orders" element={<Orders />}></Route>
+               <Route path="/checkout" element={<Checkout />}></Route>
+               <Route path="/logout" element={<Logout />}></Route>
+               <Route path="/" exact="true" element={<BurgerBuilder />}></Route>
+               <Route path="*" element={<Navigate to="/" />} />
+            </Routes>
+         );
+      }
 
-        return (
-            <div>
-                <Header />
-                <div className="container">{routes}</div>
-            </div>
-        );
-    }
+      return (
+         <div>
+            <Header />
+            <div className="container">{routes}</div>
+         </div>
+      );
+   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Main);
